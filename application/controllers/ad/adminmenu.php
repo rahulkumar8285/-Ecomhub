@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include_once('SiteMenu.php');
-class Welcome extends SiteMenu {
+
+class adminmenu extends CI_Controller{
 
 //    public $menu = Null;
 
@@ -11,11 +11,10 @@ class Welcome extends SiteMenu {
 	//   $this->menu = new  SiteMenu;
 	}
 
-	public function index()
+	public function Login()
 	{
-	    SiteMenu::MenuBar();
-		$this->load->view('index');
-		$this->load->view('footer');
+    
+	$this->load->view('ad/index');
 	}
 
 }
