@@ -15,8 +15,10 @@ class AdminModel extends CI_Model {
 
 
     public function ShowData($tabelname){
-         $query =  $this->db->get($tabelname);
-         return $query->result();
+        return $this->db->get($tabelname);
+        //   return $query->result();
+       
+        
     }
    
 }

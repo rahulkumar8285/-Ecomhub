@@ -8,6 +8,9 @@ class operation extends CI_Controller{
 	//   $this->menu = new  SiteMenu;
         $this->load->library('table');
 	    $this->load->model('AdminModel','AM');
+        if($this->session->userdata('AdminId') == Null){
+            redirect('ad/adminauth/Login');
+        }
 		
 	}
 
@@ -22,25 +25,16 @@ class operation extends CI_Controller{
     }
 
     public function ShowCategory(){
-        //set tabel//
-        // $this->table->set_heading('id', ' Name');
-        //   // set template
-        //   $style = array('table_open'  => '<table class="table table-striped table-hover">');
-        //   $this->table->set_template($style);
-        //   $result = $this->AM->ShowData('category');
-        //   echo $this->table->generate($result);
-          $resultList = $this->AM->ShowData('category');
-        //   print_r($resultList);
+          $query = $this->AM->ShowData('category');
+          $data = $query->result_array();
           $result = array();
-		  $i = 1;
-		  foreach ($resultList as $key => $value) {
-			$result['data'][] = array(
-				$i++,
-				$value->name
-			);
-		}
-		// echo json_encode($result);
-
+          foreach($data as $key=> $value){
+                $result['data'][] = array(
+                        "id"=> $value['id'],
+                        "cname" => $value['name'],
+                    );
+          }
+          echo json_encode($result);
     }
 
 }
