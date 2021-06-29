@@ -14,12 +14,9 @@ class AdminModel extends CI_Model {
     }
 
 
-    public function ShowData($tabelname){
-        return $this->db->get($tabelname);
-        //   return $query->result();
-       
-        
+    public function ShowData($tabelname,$order,$filed){
+         $this->db->order_by($filed,$order);
+        return $this->db->get($tabelname);        
     }
    
 }
-

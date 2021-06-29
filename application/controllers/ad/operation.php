@@ -25,16 +25,9 @@ class operation extends CI_Controller{
     }
 
     public function ShowCategory(){
-          $query = $this->AM->ShowData('category');
+          $query = $this->AM->ShowData('category','DESC','id');
           $data = $query->result_array();
-          $result = array();
-          foreach($data as $key=> $value){
-                $result['data'][] = array(
-                        "id"=> $value['id'],
-                        "cname" => $value['name'],
-                    );
-          }
-          echo json_encode($result);
+          echo json_encode($data);
     }
 
 }

@@ -2,6 +2,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!---style---->
 <style>
+.error {
+    border: 2px solid #ec0000;
+}
+
 table {
     width: 50%;
 }
@@ -21,29 +25,31 @@ td {
 
 <!-----style---->
 <div class="form-group">
-    <input type="text" class="form-control" id="category" placeholder="Add Category" name="category">
+    <input type="text" class="form-control " id="category" placeholder="Add Category" name="category">
     <input type="button" name="save" class="btn btn-primary" value="Save to database" id="butsave">
     <img src="<?php echo base_url('public/commonfiles/Spinner-2.gif') ?>" alert="reloadgif" style="height:20;"
         id="wait-load" />
 </div>
 <!----load---the --tabel--->
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Cname</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($users as $data) {  ?>
-        <tr>
-            <td><?php echo $data['id']; ?></td>
-            <td><?php echo $data['cname']; ?></td>
-        </tr>
-        <?php } ?>
+<table id="myTable">
+    <tr>
+        <th>S.No</th>
+        <th>C ID</th>
+        <th>C Name</th>
+        <th>Eddit</th>
+        <th>Del</th>
+
+    </tr>
+    <tbody id="table">
+
     </tbody>
 </table>
 <!---->
+
+<!-----Data --- Not--->
+<h1 id="empty">
+</h1>
+<!----------->
 
 
 
@@ -51,7 +57,45 @@ td {
 $(document).ready(function() {
     $('#wait-load').hide();
     // Coll Data function Using ajax //
-    getdata();
+
+
+    function getdata() {
+        // output = null;
+        // Show Data ajax //
+        jQuery.ajax({
+            url: "<?php  echo base_url('ad/operation/ShowCategory');?>",
+            dataType: 'json',
+            success: function(data) {
+                console.log(data.length);
+                if (data.length > 0) {
+                    for (i = 0; i < data.length; i++) {
+                        // console.log(data[i]);
+                        var id = data[i].id;
+                        var cname = data[i].name;
+                        // Output //
+                        var tr_str = "<tr>" +
+                            "<td align='center'>" + (i + 1) + "</td>" +
+                            "<td align='center'>" + id + "</td>" +
+                            "<td align='center'>" + cname + "</td>" +
+                            "<td align='center'>" + id + "</td>" +
+                            "</tr>";
+                    }
+                    $("#table").html(tr_str);
+                } else {
+                    $("#table").text("Data Empty!");
+                }
+            }
+        });
+        // Edintin //
+
+    }
+    //data show //
+
+
+
+
+
+
     ///  add data function ///
     $('#butsave').on('click', function() {
         //1///
@@ -64,7 +108,7 @@ $(document).ready(function() {
             if (format.test(name)) {
                 alert('special ch not valid');
                 $('#wait-load').hide();
-                $('#category').add('#error');
+                $('#category').addClass("error");
             } else {
                 $.ajax({
                     // ajax start //
@@ -94,7 +138,7 @@ $(document).ready(function() {
         } else {
             alert('Data Empty Pls Check ');
             $('#wait-load').hide();
-            $('#category').add('#error');
+            $('#category').addClass("error");
 
         }
         // this is ajax //
@@ -103,14 +147,9 @@ $(document).ready(function() {
 
 
     //data show function //
-    function getdata() {
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url('ad/operation/ShowCategory'); ?>",
-        });
-    }
-    //data show //
 
+
+    getdata();
 
     function DeleteCat(id) {
 
