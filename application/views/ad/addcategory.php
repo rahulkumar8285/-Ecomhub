@@ -24,6 +24,7 @@ td {
 
 
 <!-----style---->
+
 <div class="form-group">
     <input type="text" class="form-control " id="category" placeholder="Add Category" name="category">
     <input type="button" name="save" class="btn btn-primary" value="Save to database" id="butsave">
@@ -57,48 +58,34 @@ td {
 $(document).ready(function() {
     $('#wait-load').hide();
     // Coll Data function Using ajax //
-
-
+    //try
     function getdata() {
-        // output = null;
-        // Show Data ajax //
-        jQuery.ajax({
+        $.ajax({
+            type: 'ajax',
             url: "<?php  echo base_url('ad/operation/ShowCategory');?>",
+            async: false,
             dataType: 'json',
             success: function(data) {
-                console.log(data.length);
-                if (data.length > 0) {
-                    for (i = 0; i < data.length; i++) {
-                        // console.log(data[i]);
-                        var id = data[i].id;
-                        var cname = data[i].name;
-                        // Output //
-                        var tr_str = "<tr>" +
-                            "<td align='center'>" + (i + 1) + "</td>" +
-                            "<td align='center'>" + id + "</td>" +
-                            "<td align='center'>" + cname + "</td>" +
-                            "<td align='center'>" + id + "</td>" +
-                            "</tr>";
-                    }
-                    $("#table").html(tr_str);
-                } else {
-                    $("#table").text("Data Empty!");
+                var html = '';
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    html += '<tr><td>' + (i + 1) + '</td>' +
+                        '<td>' + data[i].id + '</td>' +
+                        '<td>' + data[i].name + '</td>' +
+                        '<td><a href="javascript:void(0);" data-id="' + data[i].id +
+                        '">Delete</a></td>' +
+                        '<td><a href="javascript:void(0);" id="delete" data-id="' + data[i].id +
+                        '">Delete</a></td>' +
+
+                        '</tr>';
                 }
+                $('#table').html(html);
             }
         });
-        // Edintin //
-
     }
-    //data show //
-
-
-
-
-
 
     ///  add data function ///
     $('#butsave').on('click', function() {
-        //1///
         $('#wait-load').show();
         var name = $('#category').val();
         if (name !== "") {
@@ -113,6 +100,7 @@ $(document).ready(function() {
                 $.ajax({
                     // ajax start //
                     type: "POST",
+                    cache: false,
                     url: "<?php echo base_url('ad/operation/AddCategory'); ?>",
                     data: {
                         cname: name
@@ -123,37 +111,30 @@ $(document).ready(function() {
                             $('#category').val('');
                             getdata();
                         } else {
-
                             alert('data not add');
-
                         }
                     }
-
                 });
             }
-
             //end of validation //
-
             //ajax end  //
         } else {
             alert('Data Empty Pls Check ');
             $('#wait-load').hide();
             $('#category').addClass("error");
-
         }
         // this is ajax //
     })
     // add function close //
 
-
-    //data show function //
-
-
+    //Coll The Show Data function//
     getdata();
 
-    function DeleteCat(id) {
 
-    }
+    $('#delete').on('click', function() {
+        var delId = $('#delete').val();
+        alert(delId);
+    });
 
 });
 </script>
