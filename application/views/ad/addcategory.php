@@ -20,10 +20,15 @@ td {
     background: #f9f9f9;
     padding: 6px;
 }
+
 </style>
 
 
 <!-----style---->
+
+<!----------eddit----->
+
+<!----------eddit------->
 
 <div class="form-group">
     <input type="text" class="form-control " id="category" placeholder="Add Category" name="category">
@@ -51,11 +56,18 @@ td {
 <h1 id="empty">
 </h1>
 <!----------->
+<div class='edditbox' >
+<input type="text" value="" id="edditcname" />
+<input type="hidden" value="" id="editid" />
 
+<input type="button" name="Edit" class="btn btn-primary" 
+value="Eddit" id="Edit">
+</div>
 
 
 <script type="text/javascript">
 $(document).ready(function() {
+    $('.edditbox').hide();
     $('#wait-load').hide();
     // Coll Data function Using ajax //
     //try
@@ -71,11 +83,11 @@ $(document).ready(function() {
                 for (i = 0; i < data.length; i++) {
                     html += '<tr><td>' + (i + 1) + '</td>' +
                         '<td>' + data[i].id + '</td>' +
-                        '<td>' + data[i].name + '</td>' +
-                        '<td><a href="javascript:void(0);" data-id="' + data[i].id +
-                        '">Delete</a></td>' +
-                        '<td><a href="javascript:void(0);" id="delete" data-id="' + data[i].id +
-                        '">Delete</a></td>' +
+                        '<td id="cname" >' + data[i].name + '</td>' +
+                        '<td><a href="javascript:void(0);"  class="edit" data-id="' + data[i].id +
+                        '">Edit</a></td>' +
+                        '<td><a href="javascript:void(0);" class="del" data-id="' + data[i].id +
+                        '" >Delete</a></td>' +
 
                         '</tr>';
                 }
@@ -106,13 +118,9 @@ $(document).ready(function() {
                         cname: name
                     },
                     success: function(res) {
-                        if (res == 1) {
-                            $('#wait-load').hide();
-                            $('#category').val('');
-                            getdata();
-                        } else {
-                            alert('data not add');
-                        }
+                        $('#wait-load').hide();
+                        $('#category').val('');
+                        getdata();
                     }
                 });
             }
@@ -130,11 +138,82 @@ $(document).ready(function() {
     //Coll The Show Data function//
     getdata();
 
-
-    $('#delete').on('click', function() {
-        var delId = $('#delete').val();
-        alert(delId);
+    // Delete work//  
+    $('#table').on('click', '.del', function() {
+        let id = $(this).attr('data-id');
+        $.ajax({
+            // ajax start //
+            type: "POST",
+            cache: false,
+            url: "<?php echo base_url('ad/operation/Delete'); ?>",
+            data: {
+                deletid: id
+            },
+            success: function(res) {
+                getdata();
+            }
+        });
     });
+
+    // Edit work 
+    $('#table').on('click', '.edit', function() {
+        let id = $(this).attr('data-id');
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            cache: false,
+            url: "<?php echo base_url('ad/operation/SelectData'); ?>",
+            data: {
+                ediid: id,
+            },
+            success: function(data) {
+                $('.edditbox').show();
+                $('#edditcname').val(data.name);
+                $('#editid').val(data.id);
+                // console.log(data);
+            }
+        });
+    });
+    //  Edit Curd
+
+    $('#Edit').on('click', function() {
+        $('#wait-load').show();
+        var name = $('#edditcname').val();
+        var eid = $('#editid').val();
+        if (name !== "") {
+            // if and else cd- //
+            //validation//
+            var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (format.test(name)) {
+                alert('special ch not valid');
+                $('#wait-load').hide();
+            } else {
+                $.ajax({
+                    // ajax start //
+                    type: "POST",
+                    cache: false,
+                    url: "<?php echo base_url('ad/operation/EditData'); ?>",
+                    data: {
+                        cname: name,
+                        eid: eid,
+                    },
+                    success: function(res) {
+                        $('#wait-load').hide();
+                        $('.edditbox').hide();
+                        getdata();
+                    }
+                });
+            }
+            //end of validation //
+            //ajax end  //
+        } else {
+            alert('Data Empty Pls Check ');
+            $('#wait-load').hide();
+            $('#category').addClass("error");
+        }
+        // this is ajax //
+    })
+
 
 });
 </script>

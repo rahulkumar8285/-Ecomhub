@@ -18,5 +18,22 @@ class AdminModel extends CI_Model {
          $this->db->order_by($filed,$order);
         return $this->db->get($tabelname);        
     }
+
+    public function DeleteData($id,$filed,$tabel){
+        $this->db->where($filed, $id);
+        $this->db->delete($tabel);
+        if ($this->db->affected_rows() > 0){
+          return true;
+        }
+    }
+
+    public function UpdataData($data,$id,$filed,$tabel){
+        $this->db->where($filed, $id);
+        $this->db->update($tabel,$data);
+        if ($this->db->affected_rows() > 0){
+            return true;
+          }
+
+    }
    
 }
