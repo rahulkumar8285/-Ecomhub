@@ -16,7 +16,8 @@ class operation extends CI_Controller{
 
     public function AddCategory(){
         $data = array(
-        'name' => $this->input->post('cname')
+        'name' => $this->input->post('cname'),
+        'status' => $this->input->post('sta')
         );
         $result = $this->AM->AddData($data,'category');
         // print_r($result);
@@ -49,5 +50,17 @@ class operation extends CI_Controller{
         );
         $result = $this->AM->UpdataData($data,$eid,'id','category');
     }
+
+// Status Change data 
+
+public function StatusChange(){
+    $cid = $this->input->post('cid');
+    $data = array(
+    'status' =>  $this->input->post('sid')
+    );
+    $result = $this->AM->UpdataData($data,$cid,'id','category');
+}
+
+
 
 }

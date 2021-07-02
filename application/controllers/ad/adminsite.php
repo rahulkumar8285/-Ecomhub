@@ -22,7 +22,9 @@ class adminsite extends adminmenu{
 	}
    
     public function AddCategory(){
+		$this->load->view('/ad/header');
         $this->load->view('/ad/addcategory');
+		$this->load->view('/ad/footer');
     }
 
 	public function AdminLogout(){
