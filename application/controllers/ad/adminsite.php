@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include_once('adminmenu.php');
 class adminsite extends adminmenu{
 
-//    public $menu = Null;
-
+      public $menu = array();
 		public function __construct()
 		{
 		parent::__construct();
@@ -18,7 +17,11 @@ class adminsite extends adminmenu{
 
 	public function index()
 	{
+		// $this->menu = array( 'activecls' => 'active',);
+    unset($_SESSION['invalid-user']);
+	$this->load->view('/ad/header',$this->menu);
 	$this->load->view('/ad/index');
+	$this->load->view('/ad/footer');
 	}
    
     public function AddCategory(){

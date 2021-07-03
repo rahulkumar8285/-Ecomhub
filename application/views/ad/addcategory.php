@@ -31,7 +31,7 @@
     </div>
 </div>
 <!--End Form -->
-    <div class=" container alert  msfgbox"><i class="bi bi-check-circle"></i> </div>
+<div class=" container alert  msfgbox"><i class="bi bi-check-circle"></i> </div>
 <!-- Show List -->
 <div class="card p-3">
     <div class="table-responsive">
@@ -117,3 +117,4 @@
     </div>
 </div>
 <!-- test code -->
+<?php $this->load->view('ad/ajaxcurd');?>

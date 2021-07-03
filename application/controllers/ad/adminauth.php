@@ -15,6 +15,7 @@ class adminauth extends CI_Controller {
 	//login Function//
 	public function Login()
 	{
+		unset($_SESSION['invalid-user']);
 	  if($this->input->post('email') ||$this->input->post('pasword') ){
         // login auth //
 		 $email = $this->input->post('email');
@@ -30,11 +31,17 @@ class adminauth extends CI_Controller {
 				 redirect('ad/adminsite');
 			  }
 			  else{
+				$this->session->set_flashdata('invalid-user', 'You Password is Worng Pls Check Password !'); 
 				$this->load->view('ad/login');
 			
 			  }
 		  }else{
-            $this->load->view('ad/login');
+		
+			 $this->session->set_flashdata('invalid-user', 'You Email And Password is Not Match !'); 
+			 // $this->session->set_flashdata('invalid-user', 'You Email And Password is Not Match !');
+             $this->load->view('ad/login');
+			// data not in database
+			
 		  }
 
 	  }else{

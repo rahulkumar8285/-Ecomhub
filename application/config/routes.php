@@ -57,7 +57,12 @@ $route['admin'] = 'ad/adminauth/login';
 // }
 $route['logout'] = 'ad/adminsite/AdminLogout';
 $route['addcategory'] = 'ad/adminsite/AddCategory';
-$route['showsategory'] = 'ad/operation/ShowCategory';
+$route['admin-index'] = 'ad/adminsite';
+$route['vendor-login'] = '/ve/vendorauth/Singup';
+
+
+
+
 
 
 
