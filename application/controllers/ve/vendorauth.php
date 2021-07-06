@@ -3,9 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class vendorauth extends CI_Controller {
 	public function __construct()
-	{
+	{	
 	  parent::__construct();
-	
+	  $this->load->library('form_validation');
+	  unset($_SESSION['mail-already']);
 	}
 
     // singup function
@@ -14,6 +15,20 @@ class vendorauth extends CI_Controller {
     public function Singup(){
       $this->load->view('ve/singup.php');
     }
+	
+    public function AuthSingup(){
+	
+		$this->form_validation->set_rules('Email', 'Email', 'required|valid_email|is_unique[vendor.email]');
+		$this->form_validation->set_rules('Password', 'Password', 'required|is_unique[vendor.mobile]|integer');
+
+		if ($this->form_validation->run()){
+			
+		}else{
+			$this->session->set_flashdata('mail-already', 'You Email Already Exites !'); 
+			$this->load->view('ve/singup.php');
+		}
+	}
+
 
 
 

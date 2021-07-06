@@ -20,32 +20,78 @@ function LoginValid(){
 
 }
 
-function  Singupvalid(){   
-    var name = document.forms['Singup']['fullname'].value;
-    var mobile = document.forms['Singup']['mobile'].value;
-    var email = document.forms['Singup']['Email'].value;
-    var password = document.forms['Singup']['password'].value;
-    var addresss = document.forms['Singup']['addresss'].value;
-    var city = document.forms['Singup']['city'].value;
-    var state = document.forms['Singup']['state'].value;
+     
+      var filename;
+      var filestatus;
 
-     var password = document.forms['Singup']['password'].value;
-    if(name=="" || mobile=="" || email=="" || password==""||addresss==""||city==""||state==""){
-           alert('all filed si reeww');
-           return false;
-    }else{
-        if(ValidateEmail(email)){
-            alert(doc[1]);
-            return false;
-        }
-        else{
-            alert('all filed si reeww');
-            return false;
-        }
+function showname () {
+
+      var  name = document.getElementById('doc'); 
+      filename = document.getElementById('filename');
+     alert(name.files.length);
+     if(name.files.length == 4){
+        filename.innerText = "";
+     for (var i = 0; i <= name.files.length - 1; i++)
+     {
+        filename.innerText+= "\n"+name.files.item(i).name;         
+        filestatus = true;
     }
+     }else{
+         name.form.reset();
+         filename.innerText= "Select Only 4 Documents !";
+         filestatus = false;
+         return false;
+     }
+  }
 
-   
-}
+
+ function VendorSingup(){
+    // alert('hello');
+    var errormsg = document.getElementById('errormsg');
+    var fullname = document.forms['Vendorsingup']['Full_Name'].value;
+    var email = document.forms['Vendorsingup']['Email'].value;
+    var mobile = document.forms['Vendorsingup']['Mobile'].value;
+    var password = document.forms['Vendorsingup']['password'].value;
+    var profile = document.forms['Vendorsingup']['venprofile'].value;
+    var documnet = document.forms['Vendorsingup']['doc'].value;
+    if(fullname ==" " && email==" " && mobile ==" " && password == " " ){
+        return false;
+        alert('all Fild is Requrid');
+    }else{
+         if(ValidateEmail(email)){
+            if(filestatus == true){
+                    if(mobile.length == 10 ){
+                       if(profile){
+                          return true;
+                       }else{
+                        document.getElementById('venprofile').classList.add('is-invalid'); 
+                        return false; 
+                       }
+                    }else{
+                        errormsg.style.display='block';
+                        errormsg.innerText="Pls Enter valid Mobile number ";
+                        return false;
+                    }
+            }
+            else{
+                document.getElementById('doc').classList.add('is-invalid'); 
+                return false;
+            }
+         }else{
+            errormsg.style.display='block';
+            errormsg.innerText="Pls Enter valid Email Address !";
+            return false;
+         } 
+    }
+    return false;
+  }
+
+
+
+
+
+
+
 
 
 function ValidateEmail(email) 

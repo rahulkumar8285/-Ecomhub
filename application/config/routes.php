@@ -67,6 +67,8 @@ $route['vendor-login'] = '/ve/vendorauth/Singup';
 
 
 
+
+
     
 
 
