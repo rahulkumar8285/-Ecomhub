@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('public/adminasset/') ?>assets/css/bootstrap.css">
 
+    <link rel="stylesheet"
+        href="<?php echo base_url('public/adminasset/') ?>assets/vendors/simple-datatables/style.css">
 
     <link rel="stylesheet"
         href="<?php echo base_url('public/adminasset/') ?>assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
@@ -20,6 +22,12 @@
         type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+<style>
+#profile{
+    
+}
+</style>
+
 <body>
 
     <div id="app">
@@ -56,7 +64,7 @@
                                     <a href="<?php echo base_url('addcategory'); ?>"> Add Category</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="component-badge.html">Badge</a>
+                                    <a href="<?php echo base_url('vendor-list'); ?>">Vendor List</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="component-breadcrumb.html">Breadcrumb</a>

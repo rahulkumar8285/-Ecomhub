@@ -35,6 +35,13 @@ class adminsite extends adminmenu{
 		redirect('ad/adminauth/Login');
 	}
 
+	public function Vendorlist(){
+		$query =array('data'=> $this->AM->ShowData('vendor','DESC','id'));
+		$this->load->view('/ad/header',$query);
+        $this->load->view('/ad/vendorlist');
+		$this->load->view('/ad/footer');
+	}
+
 
 
 }

@@ -31,7 +31,7 @@
                         echo  $this->session->flashdata('mail-already');?>
                     </div> <?php } ?>
                     <form name="Vendorsingup" action="<?php echo base_url('ve/vendorauth/AuthSingup') ?>" method="POST"
-                        onsubmit="return VendorSingup()">
+                        onsubmit="return VendorSingup()" enctype="multipart/form-data" >
                         <div class="form-group position-relative  mb-4">
                             <input type="text" class="form-control form-control-xl" id="Full_Name" name="Full_Name"
                                 placeholder="Full Name" value="<?php echo set_value('Full_Name'); ?>" required>
@@ -52,7 +52,7 @@
                         <div class="input-group mb-3">
 
                             <label class="input-group-text" for="inputGroupFile01"><i class="bi bi-upload"></i></label>
-                            <input type="file" class="form-control" id="venprofile" name="venprofile" value="<?php echo set_value('venprofile'); ?>"   >
+                            <input type="file" class="form-control" id="venprofile" name="venprofile" value="<?php echo set_value('venprofile'); ?>"  accept="image/png, image/jpg, image/jpeg"  >
                         </div>
                         <label for="fullname">Adhar,Bank,Pen,Gst 4 Document is must And All is Pdf Format</label>
 
@@ -64,7 +64,7 @@
                         <span id="filename"></span>
                         <div class="alert alert-danger " id="errormsg">
                         </div>
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-2">Sign Up</button>
+                        <input type="submit" name="VeSingup"  value="Singup" class="btn btn-primary btn-block btn-lg shadow-lg mt-2">
                     </form>
                     <div class="text-center mt-2 text-lg fs-4">
                         <p class='text-gray-600'>Already have an account? <a href="<?php echo base_url('vendorlogin')?>"

@@ -18,4 +18,8 @@ class Welcome extends SiteMenu {
 		$this->load->view('footer');
 	}
 
+	public function Singupmsg(){
+		$this->load->view('vesingcomp');
+	}
+
 }
