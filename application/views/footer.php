@@ -18,8 +18,8 @@
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
                         <ul>
+                            <li><a href="<?php echo base_url('vendor-singup');?>">Vnedor Singup</a></li>
                             <li><a href="<?php echo base_url('vendor-login');?>">Vnedor Login</a></li>
-                            <li><a href="#">About Our Shop</a></li>
                             <li><a href="#">Secure Shopping</a></li>
                             <li><a href="#">Delivery infomation</a></li>
                             <li><a href="#">Privacy Policy</a></li>

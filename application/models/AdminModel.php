@@ -30,10 +30,12 @@ class AdminModel extends CI_Model {
     public function UpdataData($data,$id,$filed,$tabel){
         $this->db->where($filed, $id);
         $this->db->update($tabel,$data);
+        // echo $this->db->last_query();
         if ($this->db->affected_rows() > 0){
             return true;
           }
-
     }
+
+    
    
 }

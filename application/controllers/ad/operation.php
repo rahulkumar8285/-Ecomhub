@@ -52,7 +52,6 @@ class operation extends CI_Controller{
     }
 
 // Status Change data 
-
 public function StatusChange(){
     $cid = $this->input->post('cid');
     $data = array(
@@ -61,6 +60,19 @@ public function StatusChange(){
     $result = $this->AM->UpdataData($data,$cid,'id','category');
 }
 
+public function venderstatus(){
+   $user_id = $this->input->post('eid');
+   $query =  $this->AM->SelectData('id',$user_id,'vendor');
+   $result = $query->row();
+// mail Function You Acount is active //
+
+
+// mail Function You Acount is active //
+// Status Change function //
+ $data = array('status' =>  ($result->status)? 0 : 1,);
+    $result =  $this->AM->UpdataData($data,$result->id,'id','vendor');
+    // var_dump($result);
+}
 
 
 }

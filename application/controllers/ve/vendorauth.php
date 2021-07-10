@@ -9,7 +9,11 @@ class vendorauth extends CI_Controller {
 	  parent::__construct();
 	  $this->load->library('form_validation');
 	  $this->load->model('ve/VendorModel','VD');
+	  $this->load->model('AdminModel','AD');
 	  unset($_SESSION['mail-already']);
+	  if($this->session->userdata('vender-id')){
+		redirect('ve/vendorsite');
+	   }
 	}
 
     public function Singup(){
@@ -66,18 +70,43 @@ class vendorauth extends CI_Controller {
 		}
 	}
 
+	//  Vendor Login Functino //
+
+	function login(){
+		 unset($_SESSION['invalid-user']);
+		// echo " all sesion is delete";
+		if($this->input->post('email') ||$this->input->post('pasword') ){
+			 $email = $this->input->post('email');
+ 			 $pasword = $this->input->post('password');
+			 $result = $this->AD->SelectData('email',$email,'vendor');
+			 if($result->num_rows()==1){
+				$data =  $result->row();
+				if($data->password ==  $pasword){
+					if($data->status){
+					$this->session->set_userdata('vender-id', $data->id);
+					// move to admin panel//
+					 redirect('ve/vendorsite');
+					}else{
+						$this->session->set_flashdata('invalid-user', 'You Acount is Not active !'); 
+						$this->load->view('ve/login');
+					}
+				}else{
+					$this->session->set_flashdata('invalid-user', 'You  Password is Not Match !'); 
+					$this->load->view('ve/login');
+				}
+			 }else{
+				$this->session->set_flashdata('invalid-user', 'You Email And Password is Not Match !'); 
+				$this->load->view('ve/login');
+			    // data not in database
+			 }
+		}
+		else{
+			$this->load->view('ve/login');
+		}
 
 
 
-
-
-
-
-
-
-
-
-
+	}
 
 	//login Function//
 	// public function Login()

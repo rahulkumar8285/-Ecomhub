@@ -21,11 +21,10 @@
     <link rel="shortcut icon" href="<?php echo base_url('public/adminasset/') ?>assets/images/favicon.svg"
         type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="<?php echo base_url('public/commonfiles/function.js')?>" type="text/javascript"></script>
 </head>
 <style>
-#profile{
-    
-}
+#profile {}
 </style>
 
 <body>
