@@ -1,101 +1,52 @@
-<div class="card">
-    <h5 class="card-header">Add New Prodect</h5>
-    <div class="card-body">
-        <form class="needs-validation" novalidate>
+ <form name="prodectadd" action="<?php echo base_url('ve/AddProdect');?>" method="POST" onsubmit="return VeAddProduct()">
+    <div class="card">
+        <h5 class="card-header">Add New Prodect</h5>
+        <div class="card-body">
+            <div class="alert alert-danger" style='display:none;' id='error'>
+                All Filed Is Requrid !
+            </div>
             <div class="row">
                 <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mb-2">
                     <label for="productname" class="col-form-label">Product Name</label>
-                    <input id="productname" type="text" class="form-control">
+                    <input id="productname" name="productname" type="text" class="form-control">
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="productname" class="col-form-label">Brand Name</label>
-                    <input id="productname" type="text" class="form-control">
+                    <label for="brandname" class="col-form-label">Brand Name</label>
+                    <input id="brandname" name="brandname" type="text" class="form-control">
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="exampleFormControlTextarea1">Short textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="shortdis">Short textarea</label>
+                    <textarea class="form-control" id="shortdis" name="shortdis" rows="3"></textarea>
                 </div>
-                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mb-2">
-                    <label for="exampleFormControlTextarea1">Select Size</label><br>
-                    <label class="custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" checked="" class="custom-control-input"><span
-                            class="custom-control-label">Option 1</span>
-                    </label>
-                    <label class="custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Option
-                            2</span>
-                    </label>
-                    <label class="custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Option
-                            3</span>
-                    </label>
-                    <label class="custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Option
-                            3</span>
-                    </label>
-                    <label class="custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Option
-                            3</span>
-                    </label>
-                    <label class="custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Option
-                            3</span>
-                    </label>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                    <label for="longdic">Long textarea</label>
+                    <textarea class="form-control" id="longdic" name='longdic' class="longdic" rows="5"></textarea>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-2">
-                    <label for="exampleFormControlTextarea1">Chose Color</label><br>
-                    <input type="color" name="col1" />
-                    <input type="color" name="col1" />
-                    <input type="color" name="col1" />
-                    <input type="color" name="col1" />
-                    <input type="color" name="col1" />
-                    
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 mb-2">
-                    <label for="exampleFormControlTextarea1">Extra Amout on Size </label>
-                    <input id="productname" type="number" class="form-control">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                    <label for="prodectspc">Specification</label>
+                    <textarea class="form-control" id="prodectspc" name="prodectspc" rows="5"></textarea>
                 </div>
 
             </div>
-            <div class="form-row">
-                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="validationCustom03">City</label>
-                    <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid city.
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="validationCustom04">State</label>
-                    <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid state.
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="validationCustom05">Zip</label>
-                    <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid zip.
-                    </div>
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                            <label class="form-check-label" for="invalidCheck">
-                                Agree to terms and conditions
-                            </label>
-                            <div class="invalid-feedback">
-                                You must agree before submitting.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                    <button class="btn btn-primary" type="submit">Submit form</button>
-                </div>
-            </div>
-        </form>
+        </div>
+    </div> 
+<!-- form -->
+<!-- Add Size and Color  -->
+<div class="card">
+    <div class=" clearfix card-header">
+        <h5 class="  float-left ">Add Size With Color And Price</h5>
+        <div class="float-right">
+            <input type="text" name="size" id='size' class="text-uppercase" />
+            <button type="button" class="btn btn-success " onclick='createsize();'>Add New Size</button>
+        </div>
     </div>
+
+        <div class="card-body" id='sizecolor'>
+            <!-- div one -->
+
+            <!-- div one -->
+        </div>
+        <input type='submit' name='data-send' value='submit' />
+   
 </div>
+</form>

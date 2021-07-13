@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url('public/vendorasset');?>/libs/css/style.css">
     <link rel="stylesheet"
         href="<?php echo base_url('public/vendorasset');?>/vendor/fonts/fontawesome/css/fontawesome-all.css">
+        <script src="<?php echo base_url('public/commonfiles/formvalid.js')?>" type="text/javascript"></script>
 </head>
 
 <body>
@@ -145,7 +146,7 @@
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="../assets/images/avatar-1.jpg" alt=""
+                                    src="<?php echo base_url('upload/data/vendersingup/').$data->profile; ?>" alt=""
                                     class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                                 aria-labelledby="navbarDropdownMenuLink2">

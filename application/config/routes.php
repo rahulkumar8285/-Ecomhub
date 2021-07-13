@@ -59,9 +59,17 @@ $route['logout'] = 'ad/adminsite/AdminLogout';
 $route['addcategory'] = 'ad/adminsite/AddCategory';
 $route['admin-index'] = 'ad/adminsite';
 $route['vendor-singup'] = '/ve/vendorauth/Singup';
-$route['singup-comp'] = 'welcome/Singupmsg';
+$route['vendor-login'] = '/ve/vendorauth/login';
 $route['vendor-list'] = 'ad/adminsite/Vendorlist';
+$route['singup-comp'] = 'welcome/Singupmsg';
 $route['ve/add-prodect'] = '/ve/vendorsite/addprodect';
+$route['ve/AddProdect'] = '/ve/vendorope/AddProdect';
+$route['test'] = '/ve/vendorope/Testfun';
+
+
+
+
+
 
 
 

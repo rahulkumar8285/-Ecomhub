@@ -86,14 +86,6 @@ function showname () {
     return false;
   }
 
-
-
-
-
-
-
-
-
 function ValidateEmail(email) 
 {
  if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))
@@ -104,5 +96,49 @@ function ValidateEmail(email)
 }
 
 
+// Vendor Valid Function 
+
+function VeAddProduct(){
+    alert('function is rtun');
+    var proname = document.forms['prodectadd']['productname'].value;
+    var brandname = document.forms['prodectadd']['brandname'].value;
+    var shortdis = document.forms['prodectadd']['shortdis'].value;
+    var longdic = document.forms['prodectadd']['longdic'].value;
+    var prodectspc = document.forms['prodectadd']['prodectspc'].value;
+    if(proname !==" " && brandname!=="" && longdic!==" " && prodectspc!==" " && shortdis!== " "){
+        // alert('form run');
+        return true;
+    }else{
+        document.getElementById('error').style.display='block';
+        return false;
+    }
+
+}
+
+// Create Size and Color Box //
+
+
+
+function createsize(){
+//    alert('create function working file');
+var size = document.getElementById('size').value.toUpperCase();
+console.log(size);  
+// alert(size);
+var findsize = null;
+var sizearr = ['S','M','XXL','XS','L','XL','XLL','1X','2X','3X'];
+for(i=0;i<sizearr.length;i++){
+    if(size == sizearr[i]){
+        findsize = sizearr[i];
+        break;
+    }
+}
+
+if(size!=="" && findsize!== null){
+    //  create input size and color box
+   
+    }else{
+    document.getElementById('size').style.border='2px solid red';
+ }
+}
 
 

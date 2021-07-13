@@ -20,6 +20,11 @@ class vendorsite extends vendormenu{
       $this->load->view('ve/footer');
     }
 
-    
+    public function ProdectList(){
+      $query['data'] = $this->AD->SelectData('userid',$this->session->userdata('vender-id'),'product');
+      $this->load->view('ve/productlist',$query);
+      $this->load->view('ve/footer');
+    }
+
   } 
  ?>
