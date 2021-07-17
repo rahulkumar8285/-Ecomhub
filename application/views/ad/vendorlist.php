@@ -147,7 +147,11 @@ $(document).ready(function() {
                 eid: user_id,
             },
             success: function(res) {
-                location.reload();
+                if (res == 1) {
+                    location.reload();
+                } else {
+                    location.href = "<?php echo base_url('ad/admin/');?>";
+                }
             }
         });
     }

@@ -15,6 +15,8 @@
 <script src="<?php echo base_url('public/vendorasset');?>/vendor/slimscroll/jquery.slimscroll.js"></script>
 <script src="<?php echo base_url('public/vendorasset');?>/libs/js/main-js.js"></script>
 
+<script src="<?php echo base_url('public/commonfiles/function.js')?>" type="text/javascript"></script>
+
 </body>
 
 </html>

@@ -1,52 +1,89 @@
- <form name="prodectadd" action="<?php echo base_url('ve/AddProdect');?>" method="POST" onsubmit="return VeAddProduct()">
-    <div class="card">
-        <h5 class="card-header">Add New Prodect</h5>
-        <div class="card-body">
-            <div class="alert alert-danger" style='display:none;' id='error'>
-                All Filed Is Requrid !
-            </div>
-            <div class="row">
-                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="productname" class="col-form-label">Product Name</label>
-                    <input id="productname" name="productname" type="text" class="form-control">
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="brandname" class="col-form-label">Brand Name</label>
-                    <input id="brandname" name="brandname" type="text" class="form-control">
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="shortdis">Short textarea</label>
-                    <textarea class="form-control" id="shortdis" name="shortdis" rows="3"></textarea>
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="longdic">Long textarea</label>
-                    <textarea class="form-control" id="longdic" name='longdic' class="longdic" rows="5"></textarea>
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-                    <label for="prodectspc">Specification</label>
-                    <textarea class="form-control" id="prodectspc" name="prodectspc" rows="5"></textarea>
-                </div>
+ <?php print_r($color);?>
+ <?php print_r($size);?>
+ <form name="prodectadd" action="<?php echo base_url('ve/AddProdect');?>" method="POST"
+     onsubmit="return VeAddProduct()">
+     <div class="card">
+         <h5 class="card-header">Add New Prodect</h5>
+         <div class="card-body">
+             <div class="alert alert-danger" style='display:none;' id='error'>
+                 All Filed Is Requrid !
+             </div>
+             <div class="row">
+                 <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mb-2">
+                     <label for="productname" class="col-form-label">Product Name</label>
+                     <input id="productname" name="productname" type="text" class="form-control">
+                 </div>
+                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                     <label for="brandname" class="col-form-label">Brand Name</label>
+                     <input id="brandname" name="brandname" type="text" class="form-control">
+                 </div>
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                     <label for="shortdis">Short textarea</label>
+                     <textarea class="form-control" id="shortdis" name="shortdis" rows="3"></textarea>
+                 </div>
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                     <label for="longdic">Long textarea</label>
+                     <textarea class="form-control" id="longdic" name='longdic' class="longdic" rows="5"></textarea>
+                 </div>
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                     <label for="prodectspc">Specification</label>
+                     <textarea class="form-control" id="prodectspc" name="prodectspc" rows="5"></textarea>
+                 </div>
+                 <!-- Product cat list -->
+                 <div class="col-6">
+                     <div class="form-group">
+                         <label for="input-select"> Select</label>
+                         <select class="form-control" id="input-select">
+                             <?php  foreach($data->result() as  $row){?>
+                             <option value='<?php echo $row->id; ?>'><?php echo $row->name ;?> </option>
+                             <?php } ?>
+                         </select>
+                     </div>
+                 </div>
+                 <!-- status  -->
+                 <div class="col-6">
+                     <div class="form-group">
+                         <label for="input-select">Status</label>
+                         <select class="form-control" id="input-select">
+                             <option value='0'>Draf</option>
+                             <option value='1'>Public</option>
 
-            </div>
-        </div>
-    </div> 
-<!-- form -->
-<!-- Add Size and Color  -->
-<div class="card">
-    <div class=" clearfix card-header">
-        <h5 class="  float-left ">Add Size With Color And Price</h5>
-        <div class="float-right">
-            <input type="text" name="size" id='size' class="text-uppercase" />
-            <button type="button" class="btn btn-success " onclick='createsize();'>Add New Size</button>
-        </div>
-    </div>
+                         </select>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- form -->
 
-        <div class="card-body" id='sizecolor'>
-            <!-- div one -->
+     <!-- Add Size and Color  -->
+     <div class="card">
+         <div class="card-body">
+             <div class=" card-header clearfix">
+                 <h5 class=" float-left">Add New Set</h5>
+                 <button type="button" id="addfiled" class="btn btn-success float-right">+</button>
+             </div>
+             <!-- Add dynamic set addfiled -->
+             <div class="container">
+                 <div class="row mt-2">
+                     <div class="col">Select Size</div>
+                     <div class="col">Select Color</div>
+                     <div class="col">Enter Mrp</div>
+                     <div class="col">Selling Price</div>
+                     <div class="col">Qunty</div>
+                     <div class="col">status</div>
+                     <div class="col">Delete</div>
+                 </div>
+             </div>
 
-            <!-- div one -->
-        </div>
-        <input type='submit' name='data-send' value='submit' />
-   
-</div>
-</form>
+             <div class="container" id='setbox'>
+                 <!-- dynamic set box -->
+
+             </div>
+
+
+         </div>
+     </div>
+     <!-- add data -->
+     <button class="btn btn-primary" type="submit">Submit form</button>
+ </form>

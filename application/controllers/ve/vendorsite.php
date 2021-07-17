@@ -6,6 +6,9 @@ class vendorsite extends vendormenu{
    public function __construct()
 	{
       parent::__construct();
+      if($this->session->userdata('vender-id') == Null){
+				redirect('ve/vendorsite');
+			}
       $this->load->model('AdminModel','AD');
       vendormenu::menu();
    }
@@ -16,6 +19,8 @@ class vendorsite extends vendormenu{
     }
     public function addprodect(){
       $query['data'] = $this->AD->ShowData('category','DESC','id');
+      $query['size'] = $this->AD->ShowData('size','ASC','orderby');
+      $query['color'] = $this->AD->ShowData('color','ASC','id');
       $this->load->view('ve/addprodect',$query);
       $this->load->view('ve/footer');
     }
@@ -25,6 +30,9 @@ class vendorsite extends vendormenu{
       $this->load->view('ve/productlist',$query);
       $this->load->view('ve/footer');
     }
+
+  
+
 
   } 
  ?>

@@ -256,7 +256,7 @@
                                                     class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="general.html">General</a>
+                                            <a class="nav-link"href="<?php echo base_url('/ve/add-size');?>">Add Size</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="carousel.html">Carousel</a>

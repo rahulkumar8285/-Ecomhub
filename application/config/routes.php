@@ -64,7 +64,10 @@ $route['vendor-list'] = 'ad/adminsite/Vendorlist';
 $route['singup-comp'] = 'welcome/Singupmsg';
 $route['ve/add-prodect'] = '/ve/vendorsite/addprodect';
 $route['ve/AddProdect'] = '/ve/vendorope/AddProdect';
+$route['ve/add-size'] = '/ve/vendorsite/addsize';
+
 $route['test'] = '/ve/vendorope/Testfun';
+
 
 
 

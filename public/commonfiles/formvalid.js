@@ -112,6 +112,7 @@ function VeAddProduct(){
         document.getElementById('error').style.display='block';
         return false;
     }
+    return true;
 
 }
 
@@ -119,26 +120,5 @@ function VeAddProduct(){
 
 
 
-function createsize(){
-//    alert('create function working file');
-var size = document.getElementById('size').value.toUpperCase();
-console.log(size);  
-// alert(size);
-var findsize = null;
-var sizearr = ['S','M','XXL','XS','L','XL','XLL','1X','2X','3X'];
-for(i=0;i<sizearr.length;i++){
-    if(size == sizearr[i]){
-        findsize = sizearr[i];
-        break;
-    }
-}
-
-if(size!=="" && findsize!== null){
-    //  create input size and color box
-   
-    }else{
-    document.getElementById('size').style.border='2px solid red';
- }
-}
 
 

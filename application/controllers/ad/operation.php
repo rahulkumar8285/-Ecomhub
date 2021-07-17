@@ -69,9 +69,12 @@ public function venderstatus(){
 
 // mail Function You Acount is active //
 // Status Change function //
- $data = array('status' =>  ($result->status)? 0 : 1,);
-    $result =  $this->AM->UpdataData($data,$result->id,'id','vendor');
+     $data = array('status' =>  ($result->status)? 0 : 1,);
+     $result =  $this->AM->UpdataData($data,$result->id,'id','vendor');
     // var_dump($result);
+    echo $result;
+   
+
 }
 
 
