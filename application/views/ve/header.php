@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url('public/vendorasset');?>/libs/css/style.css">
     <link rel="stylesheet"
         href="<?php echo base_url('public/vendorasset');?>/vendor/fonts/fontawesome/css/fontawesome-all.css">
-        <script src="<?php echo base_url('public/commonfiles/formvalid.js')?>" type="text/javascript"></script>
+        <!-- <script src="<?php echo base_url('public/commonfiles/formvalid.js')?>" type="text/javascript"></script> -->
 </head>
 
 <body>

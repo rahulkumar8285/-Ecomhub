@@ -16,17 +16,22 @@ class vendorope extends  CI_Controller{
 
     public function AddProdect(){
        $data = array(
-           'size'=> $this->input->post('size'), 
         'userid'=> $this->session->userdata('vender-id'),
         'productname' => $this->input->post('productname'),
         'productband'=> $this->input->post('brandname'),
         'shortdisc'=> $this->input->post('shortdis'),
         'longdisc'=> $this->input->post('longdic'),
+        'selectcat'=> $this->input->post('selectcat'), 
+        'publicstats'=> $this->input->post('publicstats'), 
+        'siselectsizeze'=> $this->input->post('selectsize'), 
         'color'=> $this->input->post('color'), 
-        'sellprice'=> $this->input->post('sellprice'), 
+        'productmrp'=> $this->input->post('productmrp'), 
+        'sellingprice'=> $this->input->post('sellingprice'), 
         'qunty'=> $this->input->post('qunty'), 
-        'img'=> $this->input->post('img'), 
-
+        'setstatus'=> $this->input->post('setstatus'), 
+        'imgcolor'=> $this->input->post('imgcolor'), 
+        'mainimg'=> $this->input->post('mainimg'), 
+        'multimge'=> $this->input->post('multimge'), 
        );
         // $result =  $this->AD->AddData($data,'product');
 echo '<pre>';
