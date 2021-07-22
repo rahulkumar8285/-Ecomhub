@@ -31,6 +31,13 @@ class vendorsite extends vendormenu{
       $this->load->view('ve/footer');
     }
 
+    public function addvar($id){
+      $query['pid'] = $id;
+      $query['size'] = $this->AD->ShowData('size','ASC','orderby');
+      $query['color'] = $this->AD->ShowData('color','ASC','id');
+      $this->load->view('ve/product-variation',$query);
+      $this->load->view('ve/footer');
+    }
   
 
 

@@ -65,7 +65,8 @@ $route['singup-comp'] = 'welcome/Singupmsg';
 $route['ve/add-prodect'] = '/ve/vendorsite/addprodect';
 $route['ve/AddProdect'] = '/ve/vendorope/AddProdect';
 $route['ve/add-size'] = '/ve/vendorsite/addsize';
-
+$route['ve/add-var/(:num)'] = '/ve/vendorsite/addvar/$1';
+$route['ve/addvar'] = '/ve/vendorope/addvar';
 $route['test'] = '/ve/vendorope/Testfun';
 
 

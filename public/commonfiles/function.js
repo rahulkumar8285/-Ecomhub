@@ -25,13 +25,10 @@ $(document).on('click', '#removeRow', function () {
 });
 
 // add img box
-var imgcolor = '';
-$(document).on('click','#multimge',function(){
-  imgcolor =  $('#imgcolor').val();
-  //  alert(data);
-  });
+
 //
 
+var i= 1;
 $(document).on('click','#addimg',function(){
   var html = '';
   html +=' <div class="row mt-3" id="inputimgremove" >';
@@ -40,13 +37,14 @@ $(document).on('click','#addimg',function(){
   html +='<div class="col-3 mr-2">  <input type="file" class="custom-file-input" id="mainimg"  name="mainimg[]" />';
   html +=' <label class="custom-file-label" for="customFile">Profile Image</label></div>';
   // multi images
-  html +='<div class="col-5">  <input type="file" class="custom-file-input" id="multimge" name="multimge['+imgcolor+'][]" multiple />';
+  html +='<div class="col-5">  <input type="file" class="custom-file-input" id="multimge" name="multimge['+i+'][]" multiple />';
   html +='<label class="custom-file-label" for="customFile">Product Multi Images</label></div>';
   html +='<div class="col-1"> <button type="button" class="btn btn-danger" id="removeRow" >-</button></div>';
   html +='</div>';
-
-  $('#imgbox').append(html); 
+  $('#imgbox').append(html);
+  i++; 
 });
+// remove the multi img boxes
 $(document).on('click', '#removeRow', function () {
   $(this).closest('#inputimgremove').remove();
 });

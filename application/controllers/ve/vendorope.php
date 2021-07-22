@@ -21,44 +21,52 @@ class vendorope extends  CI_Controller{
         'productband'=> $this->input->post('brandname'),
         'shortdisc'=> $this->input->post('shortdis'),
         'longdisc'=> $this->input->post('longdic'),
-        'selectcat'=> $this->input->post('selectcat'), 
-        'publicstats'=> $this->input->post('publicstats'), 
-        'siselectsizeze'=> $this->input->post('selectsize'), 
-        'color'=> $this->input->post('color'), 
-        'productmrp'=> $this->input->post('productmrp'), 
-        'sellingprice'=> $this->input->post('sellingprice'), 
-        'qunty'=> $this->input->post('qunty'), 
-        'setstatus'=> $this->input->post('setstatus'), 
-        'imgcolor'=> $this->input->post('imgcolor'), 
-        'mainimg'=> $this->input->post('mainimg'), 
-        'multimge'=> $this->input->post('multimge'), 
+        'productspc'=> $this->input->post('prodectspc'),
+        'categoryid'=> $this->input->post('selectcat'), 
+        'status'=> $this->input->post('publicstats'),   
+        'date'=>date('d-M-Y'),      
        );
-        // $result =  $this->AD->AddData($data,'product');
-echo '<pre>';
- print_r($data);
-echo '</pre>';
-        // if($result == 1){redirect('ve/vendorsite/ProdectList');}
-   
+       $result =  $this->AD->AddData($data,'product');
+       if($result == 1){redirect('ve/vendorsite/ProdectList');}
+      }
+      
+      function addvar(){
+         $userid =  $this->session->userdata('vender-id');
+         $pid = $this->input->post('pid'); 
+
+         $data = array(
+            'userid' =>  $this->session->userdata('vender-id'),
+            'pid' => $this->input->post('pid'),
+            'selectsize' => implode(',',$this->input->post('selectsize')),
+            'color'=> implode(',',$this->input->post('color')),
+            'productmrp'=> implode(',',$this->input->post('productmrp')),
+            'sellingprice'=> implode(',',$this->input->post('sellingprice')),
+            'qunty'=> implode(',',$this->input->post('qunty')),
+            'setstatus'=> implode(',',$this->input->post('setstatus')), 
+            'imgcolor' =>  implode(',',$this->input->post('imgcolor')),
+            'mainimg ' =>  implode(',',$this->input->post('mainimg')),
+         );
+         
+           $multimge  =   $this->input->post('multimge');
+            // echo sizeof($data['multimge']);
+            $imgfind = array();
+            $img = null;
+            for($i=0;$i<sizeof($multimge);$i++){
+               $imgfind[$i] = implode(',',$multimge[$i]);
+            }
+            for($i=0;$i<sizeof($imgfind);$i++){
+               $img = implode('/',$imgfind);
+            }
+
+
+         echo '<pre>';
+         print_r($data);
+         // print_r($imgfind);
+         print_r($img);
+
+         echo '</pre>';
+         // $result =  $this->AD->AddData($data,'variation');
     }
-
-
-    // function Testfun(){
-    //     // echo 'i am testing';
-
-    //     $data = array(
-    //     'radio' => $this->input->post('radio'),
-    //     'colorcode' => $this->input->post('colorcode'),
-    //     'mainprice' => $this->input->post('mainprice'),
-    //     'sellingprice' => $this->input->post('sellingprice'),
-    //     'qunt' => $this->input->post('qunt'),
-    //     'image' => $this->input->post('image'),
-    //     );
-
-    //     echo '<pre>';
-    //     print_r($data);
-
-    // }
-
 
 
  }
