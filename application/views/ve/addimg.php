@@ -30,7 +30,7 @@
                         <td><?php echo $row->date ; ?></td>
                         <td><?php echo $row->status ; ?></td>
                         <td>
-                        <a href="<?php echo base_url('ve/pr-img/').$row->id;?>  " class="btn btn-outline-success"><i class="fas fa-plus"></i></a>
+                            <a href="#" class="btn btn-outline-warning"><i class="far fa-edit"></i></a>
                             <a href="<?php echo base_url('ve/add-var/').$row->id;?>  " class="btn btn-outline-success"><i class="fas fa-plus"></i></a>
                         </td>
                     </tr>

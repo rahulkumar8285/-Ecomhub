@@ -1,5 +1,4 @@
- <?php print_r($color);?>
- <?php print_r($size);?>
+
  <form name="prodectadd" action="<?php echo base_url('ve/AddProdect');?>" method="POST"
      onsubmit="return VeAddProduct()">
      <div class="card">

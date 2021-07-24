@@ -77,7 +77,6 @@
     <script src="<?php echo base_url('public/sitedefault/');?>js/main.js"></script>
 
 
-
 </body>
 
 </html>

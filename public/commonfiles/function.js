@@ -11,9 +11,9 @@ $('#addfiled').on('click',function(){
  html +='<div class="row mt-3" id="inputFormRow">';
  html +='<div class="col"><select class="form-control" id="sizeselect" id="selectsize" name="selectsize[]" >'+size+'</select></div>';
  html +='<div class="col"> <select class="form-control" id="input-select" name="color[]">'+color+'</select></div>';
- html +='<div class="col"> <input id="productname" name="productmrp[]" type="text" class="form-control"></div>';
- html +='<div class="col"> <input id="productname" name="sellingprice[]" type="text" class="form-control"></div>';
- html +='<div class="col"> <input id="productname" name="qunty[]" type="text" class="form-control"></div>';
+ html +='<div class="col"> <input id="productname" name="productmrp[]" type="text" class="form-control" required></div>';
+ html +='<div class="col"> <input id="productname" name="sellingprice[]" type="text" class="form-control" required></div>';
+ html +='<div class="col"> <input id="productname" name="qunty[]" type="text" class="form-control" required></div>';
  html +='<div class="col"> <select class="form-control" id="input-select" name="setstatus[]"> <option value="1">Public </option> <option value="0">Draf </option></select></div>';
  html +='<div class="col"> <button type="button" class="btn btn-danger" id="removeRow" >-</button></div>';
  html +='</div>'; 
@@ -32,21 +32,33 @@ var i= 1;
 $(document).on('click','#addimg',function(){
   var html = '';
   html +=' <div class="row mt-3" id="inputimgremove" >';
-  html +='<div class="col"><select class="form-control" id="imgcolor" name="imgcolor[]" >'+color+'</select></div>';
+  html +='<div class="col"><select class="form-control" id="imgcolor" name="imgcolor[]" required >'+color+'</select></div>';
   // Profile img
-  html +='<div class="col-3 mr-2">  <input type="file" class="custom-file-input" id="mainimg"  name="mainimg[]" />';
+  html +='<div class="col-3 mr-2">  <input type="file" class="custom-file-input" id="mainimg"  name="mainimg[]"required  />';
   html +=' <label class="custom-file-label" for="customFile">Profile Image</label></div>';
   // multi images
-  html +='<div class="col-5">  <input type="file" class="custom-file-input" id="multimge" name="multimge['+i+'][]" multiple />';
+  html +='<div class="col-5">  <input type="file" class="custom-file-input" id="multimge" name="multimge['+i+'][]" multiple  required/>';
   html +='<label class="custom-file-label" for="customFile">Product Multi Images</label></div>';
   html +='<div class="col-1"> <button type="button" class="btn btn-danger" id="removeRow" >-</button></div>';
   html +='</div>';
   $('#imgbox').append(html);
   i++; 
+  
 });
+
+//img upload 
+
 // remove the multi img boxes
 $(document).on('click', '#removeRow', function () {
   $(this).closest('#inputimgremove').remove();
 });
+// img- var
+$(document).on('click','#mainimg',function(){
+  $("#mainimg").change(function(e) {
+    var geekss = e.target.files[0].name;
+    
+  });
+});
+
 
 });

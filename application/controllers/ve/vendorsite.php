@@ -35,7 +35,14 @@ class vendorsite extends vendormenu{
       $query['pid'] = $id;
       $query['size'] = $this->AD->ShowData('size','ASC','orderby');
       $query['color'] = $this->AD->ShowData('color','ASC','id');
+      $query['data'] =  $this->AD->SelectData('pid',$id,'variation');
       $this->load->view('ve/product-variation',$query);
+      $this->load->view('ve/footer');
+    }
+
+    function addimg(){
+      $query['data'] = $this->AD->SelectData('userid',$this->session->userdata('vender-id'),'product');
+      $this->load->view('ve/addimg', $query);
       $this->load->view('ve/footer');
     }
   

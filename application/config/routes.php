@@ -52,9 +52,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'ad/adminauth/login';
-// $route['adminindex'] =  function (){
-//    $this->load->view('ad/index');
-// }
 $route['logout'] = 'ad/adminsite/AdminLogout';
 $route['addcategory'] = 'ad/adminsite/AddCategory';
 $route['admin-index'] = 'ad/adminsite';
@@ -68,7 +65,9 @@ $route['ve/add-size'] = '/ve/vendorsite/addsize';
 $route['ve/add-var/(:num)'] = '/ve/vendorsite/addvar/$1';
 $route['ve/addvar'] = '/ve/vendorope/addvar';
 $route['test'] = '/ve/vendorope/Testfun';
-
+$route['ve/ProdectList'] = 've/vendorsite/ProdectList';
+$route['ve/pr-addimg'] = 've/vendorsite/addimg';
+$route['ve/pr-img/(:num)'] = '/ve/vendorsite/addimg/$';
 
 
 
