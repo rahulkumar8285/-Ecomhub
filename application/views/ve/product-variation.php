@@ -61,6 +61,7 @@
 </form>
 
 <!-- product list  -->
+<?php if($data->num_rows()>0 ){?>
 <div class="card">
 
     <div class="card-header">
@@ -75,11 +76,12 @@
                         <th>V.ID</th>
                         <th>P.ID</th>
                         <th>P.Size</th>
-                        <th>Public Date</th>
+                        <th>P.Color</th>
                         <th>MRP</th>
                         <th>Selling</th>
                         <th>Quntity</th>
-                        <th>status</th>
+                        <th>Public Date</th>
+                        <th>Status</th>
                         <th>Action</th>
 
                     </tr>
@@ -97,10 +99,15 @@
                         <td><?php echo $row->productmrp ; ?></td>
                         <td><?php echo $row->sellingprice ; ?></td>
                         <td><?php echo $row->qunty ; ?></td>
-                        <td><?php  echo ($row->setstatus)? ' <span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>';?></td>
+                        <td><?php echo $row->date ; ?></td>
+                        <td><?php  echo ($row->setstatus)? ' <span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>';?>
+                        </td>
                         <td>
-                            <a href="<?php echo base_url('ve/edditvar/').$row->id;?>" class="btn btn-outline-warning"><i class="far fa-edit"></i></a>
-                            <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a href="<?php echo base_url('ve/edit-var/').$row->id;?>" class="btn btn-outline-warning"><i
+                                    class="far fa-edit"></i></a>
+                            <button id="deletebtn" data-toggle="modal" data-target="#exampleModalCenter"
+                                data-del="<?php echo $row->id; ?>" class="btn btn-outline-danger"><i
+                                    class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>
                     <?php  $i++; } ?>
@@ -110,3 +117,30 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Deleted Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Delete This Item
+                <form action="<?php echo base_url('deletedata');?>" method="POST">
+                    <input type="hidden" name="data-id" id="data-delid" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+            <form>
+        </div>
+    </div>
+</div>
+<?php }?>

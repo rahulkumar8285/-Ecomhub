@@ -33,7 +33,7 @@
                      <div class="form-group">
                          <label for="input-select"> Select catagrey</label>
                          <select class="form-control" id="selectcat" name="selectcat">
-                             <?php  foreach($data->result() as  $row){?>
+                             <?php  foreach($cat->result() as  $row){?>
                              <option value='<?php echo $row->id; ?>'><?php echo $row->name ;?> </option>
                              <?php } ?>
                          </select>

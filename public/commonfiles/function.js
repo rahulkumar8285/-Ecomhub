@@ -24,41 +24,15 @@ $(document).on('click', '#removeRow', function () {
   $(this).closest('#inputFormRow').remove();
 });
 
-// add img box
-
-//
-
-var i= 1;
-$(document).on('click','#addimg',function(){
-  var html = '';
-  html +=' <div class="row mt-3" id="inputimgremove" >';
-  html +='<div class="col"><select class="form-control" id="imgcolor" name="imgcolor[]" required >'+color+'</select></div>';
-  // Profile img
-  html +='<div class="col-3 mr-2">  <input type="file" class="custom-file-input" id="mainimg"  name="mainimg[]"required  />';
-  html +=' <label class="custom-file-label" for="customFile">Profile Image</label></div>';
-  // multi images
-  html +='<div class="col-5">  <input type="file" class="custom-file-input" id="multimge" name="multimge['+i+'][]" multiple  required/>';
-  html +='<label class="custom-file-label" for="customFile">Product Multi Images</label></div>';
-  html +='<div class="col-1"> <button type="button" class="btn btn-danger" id="removeRow" >-</button></div>';
-  html +='</div>';
-  $('#imgbox').append(html);
-  i++; 
-  
+//  alert('del function ruin');
+$(document).on('click','#deletebtn',function(){
+ var delid = $(this).attr('data-del');
+//  console.log(delid);
+$('#data-delid').val(delid);
 });
 
-//img upload 
 
-// remove the multi img boxes
-$(document).on('click', '#removeRow', function () {
-  $(this).closest('#inputimgremove').remove();
-});
-// img- var
-$(document).on('click','#mainimg',function(){
-  $("#mainimg").change(function(e) {
-    var geekss = e.target.files[0].name;
-    
-  });
-});
+
 
 
 });

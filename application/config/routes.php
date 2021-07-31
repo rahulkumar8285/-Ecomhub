@@ -67,7 +67,20 @@ $route['ve/addvar'] = '/ve/vendorope/addvar';
 $route['test'] = '/ve/vendorope/Testfun';
 $route['ve/ProdectList'] = 've/vendorsite/ProdectList';
 $route['ve/pr-addimg'] = 've/vendorsite/addimg';
-$route['ve/pr-img/(:num)'] = '/ve/vendorsite/addimg/$';
+$route['ve/pr-img/(:num)'] = '/ve/vendorsite/addimg/$1';
+$route['ve/edit-var/(:num)'] = '/ve/vendorsite/editvar/$1';
+$route['ve/updatevar'] = '/ve/vendorope/upldatevar';
+$route['deletedata'] = '/ve/vendorope/deletedata';
+$route['deletepro'] = '/ve/vendorope/deleproduct';
+$route['proaddimg'] = '/ve/vendorope/addproimg';
+$route['DeleteImage'] = '/ve/vendorope/DeleteImage';
+$route['ve/edit-img/(:num)'] = '/ve/vendorsite/updateImg/$1';
+
+
+
+
+
+
 
 
 
